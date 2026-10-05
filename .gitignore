@@ -1,0 +1,281 @@
+# PhotoArchive — conservative safeguards for a PUBLIC repository.
+# Working archive files belong outside Git (for example, in Dropbox).
+# Ignore rules do not remove files already tracked by Git or erase Git history.
+# Review git status and staged diffs before every commit; never force-add private data.
+
+# -----------------------------------------------------------------------------
+# Original archival photographs, scans, video, audio, and document captures.
+# Case-insensitive character classes also cover uppercase camera/scanner suffixes.
+# -----------------------------------------------------------------------------
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[jJ][pP][eE]
+*.[pP][nN][gG]
+*.[tT][iI][fF]
+*.[tT][iI][fF][fF]
+*.[gG][iI][fF]
+*.[bB][mM][pP]
+*.[wW][eE][bB][pP]
+*.[hH][eE][iI][cC]
+*.[hH][eE][iI][fF]
+*.[aA][vV][iI][fF]
+*.[dD][nN][gG]
+*.[rR][aA][wW]
+*.[cC][rR]2
+*.[cC][rR]3
+*.[nN][eE][fF]
+*.[aA][rR][wW]
+*.[oO][rR][fF]
+*.[rR][wW]2
+*.[rR][aA][fF]
+*.[pP][sS][dD]
+*.[pP][sS][bB]
+*.[pP][dD][fF]
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[aA][vV][iI]
+*.[mM][kK][vV]
+*.[mM][4][vV]
+*.[wW][aA][vV]
+*.[mM][pP]3
+*.[fF][lL][aA][cC]
+*.[mM]4[aA]
+*.[aA][aA][cC]
+*.[oO][gG][gG]
+*.[xX][mM][pP]
+*.[aA][aA][eE]
+
+# Archive, derivative, and private working trees, at any depth.
+# Use contents patterns, not excluded parent directories, so fixture opt-ins work.
+[Aa]rchive/**
+[Aa]rchives/**
+[Pp]hotos/**
+[Ss]cans/**
+[Oo]riginals/**
+[Nn]egatives/**
+[Dd]erivatives/**
+[Tt]humbnails/**
+[Pp]reviews/**
+[Oo][Cc][Rr]/**
+[Dd]ropbox/**
+[Pp]rivate/**
+[Pp]ersonal/**
+[Ff]amily/**
+[Ss]ensitive/**
+[Dd]ata/**
+[Ii]mports/**
+[Ww]ork/**
+[Ll]ocal/**
+
+# -----------------------------------------------------------------------------
+# Family records, bulk metadata, spreadsheets, genealogy, and serialized data.
+# JSON/YAML/XML are not globally excluded: schemas and source config use them.
+# Keep private JSON/YAML/XML in the private/data/local trees above.
+# -----------------------------------------------------------------------------
+*.[cC][sS][vV]
+*.[tT][sS][vV]
+*.[jJ][sS][oO][nN][lL]
+*.[nN][dD][jJ][sS][oO][nN]
+*.[xX][lL][sS]
+*.[xX][lL][sS][xX]
+*.[xX][lL][sS][mM]
+*.[oO][dD][sS]
+*.[gG][eE][dD]
+*.[gG][eE][dD][cC][oO][mM]
+*.[vV][cC][fF]
+*.[pP][aA][rR][qQ][uU][eE][tT]
+*.[fF][eE][aA][tT][hH][eE][rR]
+*.[pP][kK][lL]
+*.[pP][iI][cC][kK][lL][eE]
+
+# Deliberately maintained controlled vocabularies may use tabular formats.
+# These root directories must contain public, reviewed content only.
+!/vocabularies/**
+!/controlled-vocabularies/**
+!/schema/vocabularies/**
+!/schemas/vocabularies/**
+
+# -----------------------------------------------------------------------------
+# Metabase/application state, databases, journals, locks, and database dumps.
+# SQL source/migrations stay trackable; place SQL dumps in backups/ or exports/.
+# -----------------------------------------------------------------------------
+[Mm]etabase/**
+[Mm]etabase-data/**
+*.[dD][bB]
+*.[dD][bB]3
+*.[sS][qQ][lL][iI][tT][eE]
+*.[sS][qQ][lL][iI][tT][eE]3
+*.[dD][uU][cC][kK][dD][bB]
+*.[mM][dD][bB]
+*.[aA][cC][cC][dD][bB]
+*.[mM][vV].[dD][bB]
+*.[hH]2.[dD][bB]
+*.[tT][rR][aA][cC][eE].[dD][bB]
+*.[lL][oO][cC][kK].[dD][bB]
+*.[dD][bB]-*
+*.[sS][qQ][lL][iI][tT][eE]-*
+*.[sS][qQ][lL][iI][tT][eE]3-*
+*.[dD][uU][cC][kK][dD][bB].[wW][aA][lL]
+*.[mM][dD][fF]
+*.[lL][dD][fF]
+*.[dD][uU][mM][pP]
+
+# Backups, exports, bundles, and compressed archives.
+[Bb]ackup/**
+[Bb]ackups/**
+[Ee]xport/**
+[Ee]xports/**
+*.[bB][aA][kK]
+*.[bB][aA][cC][kK][uU][pP]
+*.[oO][lL][dD]
+*.[zZ][iI][pP]
+*.7[zZ]
+*.[rR][aA][rR]
+*.[tT][aA][rR]
+*.[gG][zZ]
+*.[tT][gG][zZ]
+*.[bB][zZ]2
+*.[xX][zZ]
+*.[zZ][sS][tT]
+
+# -----------------------------------------------------------------------------
+# Secrets, credentials, environment files, and machine-specific configuration.
+# Only sanitized example/template environment files are normally trackable.
+# -----------------------------------------------------------------------------
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!.env.template
+!*.env.example
+!*.env.template
+[Ss]ecrets/**
+[Cc]redentials/**
+.ssh/**
+.aws/**
+.azure/**
+.gcloud/**
+.config/gcloud/**
+*.[pP][eE][mM]
+*.[kK][eE][yY]
+*.[pP]12
+*.[pP][fF][xX]
+*.[jJ][kK][sS]
+*.[kK][eE][yY][sS][tT][oO][rR][eE]
+id_rsa*
+id_ed25519*
+credentials.*
+secrets.*
+service-account*.json
+*service_account*.json
+.npmrc
+.pypirc
+.netrc
+.git-credentials
+*.local
+*.local.*
+config.local.*
+settings.local.*
+local.settings.json
+
+# -----------------------------------------------------------------------------
+# Logs, temporary files, caches, and OS metadata.
+# -----------------------------------------------------------------------------
+[Ll]ogs/**
+[Tt]mp/**
+[Tt]emp/**
+[Cc]ache/**
+.cache/**
+*.[lL][oO][gG]
+*.log.*
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+._*
+.Spotlight-V100/**
+.Trashes/**
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/**
+
+# Editor/IDE state and local project files.
+.vscode/**
+.idea/**
+.vs/**
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.code-workspace
+.history/**
+
+# -----------------------------------------------------------------------------
+# Python environments, caches, packaging output, and test reports.
+# Dependency manifests and lockfiles remain trackable.
+# -----------------------------------------------------------------------------
+.venv/**
+venv/**
+env/**
+ENV/**
+__pycache__/**
+*.py[cod]
+*$py.class
+.pytest_cache/**
+.mypy_cache/**
+.ruff_cache/**
+.pyre/**
+.tox/**
+.nox/**
+.ipynb_checkpoints/**
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/**
+*.egg-info/**
+*.egg
+*.whl
+pip-wheel-metadata/**
+__pypackages__/**
+
+# Node dependencies, framework output, and generated artifacts.
+node_modules/**
+.npm/**
+.pnpm-store/**
+.yarn/cache/**
+.yarn/unplugged/**
+.yarn/install-state.gz
+.next/**
+.nuxt/**
+.output/**
+.svelte-kit/**
+.parcel-cache/**
+.turbo/**
+build/**
+dist/**
+coverage/**
+site/**
+generated/**
+artifacts/**
+outputs/**
+reports/**
+*.tsbuildinfo
+*.map
+*.pyc
+
+# -----------------------------------------------------------------------------
+# EXPLICIT OPT-IN: sanitized, small PUBLIC test fixtures (repository-root path).
+# These final rules override ALL rules above, including media/data extensions.
+# Every file here can be committed: review for faces, names, EXIF/GPS, private
+# records, credentials, and size before adding. Never place real secrets here.
+# Keep tests/ and tests/fixtures/ traversable even if broader rules are added.
+# -----------------------------------------------------------------------------
+!/tests/
+!/tests/fixtures/
+!/tests/fixtures/public/
+!/tests/fixtures/public/**
